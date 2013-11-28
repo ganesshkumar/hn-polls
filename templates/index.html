@@ -2,10 +2,11 @@
 <head>
 <title>Hello from Flask</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
 <script type=text/javascript>
   $root_url = {{ request.base_url|tojson|safe }};
 </script>
-<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body onload="make_clickable()">
     <h1 style="text-align:center"> Under Construction </h1>
@@ -16,6 +17,7 @@
         <span class="clickable" id="{{ poll._id }}-title"> {{ poll.title}} </span>
         <span> {{ poll._id }} </span>
         <span> {{ poll.date_added.date() }} </span>
+        <canvas id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></canvas>
       </div>
     {% endfor %}
 </body>

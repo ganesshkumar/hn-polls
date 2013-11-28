@@ -18,7 +18,18 @@ def add_poll(post_id):
 def poll_detail():
     post_id = request.args.get('poll_id', '', type=str)
     soup = HNSoup(post_id)
-    result = dict(zip(soup.get_graph_labels(), soup.get_graph_votes()))
+    graph_labels = soup.get_graph_labels()
+    graph_votes = soup.get_graph_votes()
+    result = {
+              "labels" : graph_labels,
+              "datasets" : [
+                  {
+                      "fillColor" : "rgba(220,220,220,0.5)",
+                      "strokeColor" : "rgba(220,220,220,1)",
+                      "data" : graph_votes
+                  }
+              ]
+    }
     return jsonify(result=result)
 
 @app.route("/")

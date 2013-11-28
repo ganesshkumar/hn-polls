@@ -7,9 +7,9 @@ make_clickable = function() {
             poll_id: poll_id,
         }, function(data) {
             window.result = data.result;
-            for (key in data.result) {
-                console.log(key + " " + data.result[key])
-            }
+            var canvas = document.getElementById(poll_id + "-canvas");
+            canvas.style.display = "block";
+            new Chart(canvas.getContext("2d")).Bar(data.result);
         });
         return false;
     })

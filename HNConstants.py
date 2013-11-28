@@ -1,4 +1,4 @@
 #! /usr/bin/python
 
-class Constants:
+class HNConstants:
     hn_post_url = "https://news.ycombinator.com/item?id="

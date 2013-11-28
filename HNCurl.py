@@ -2,7 +2,7 @@
 
 import urllib2
 
-class Curl:
+class HNCurl:
     @staticmethod
     def get_page_source(url):
         response = urllib2.urlopen(url)

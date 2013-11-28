@@ -1,0 +1,22 @@
+<!doctype html>
+<head>
+<title>Hello from Flask</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type=text/javascript>
+  $root_url = {{ request.base_url|tojson|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+</head>
+<body onload="make_clickable()">
+    <h1 style="text-align:center"> Under Construction </h1>
+    <h2 style="text-align:center"> A site to collect all the HackerNews polls </h2>
+    {% for poll in polls %}
+      <div>
+        <span> {{ poll.votes }} </span>
+        <span class="clickable" id="{{ poll._id }}-title"> {{ poll.title}} </span>
+        <span> {{ poll._id }} </span>
+        <span> {{ poll.date_added.date() }} </span>
+      </div>
+    {% endfor %}
+</body>
+</html>

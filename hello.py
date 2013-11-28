@@ -8,8 +8,8 @@ from flask import Flask, render_template, url_for, request, jsonify
 app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
-@app.route("/add-post/<post_id>")
-def add_post(post_id):
+@app.route("/add-poll/<post_id>")
+def add_poll(post_id):
     data = HNSoup(post_id).get_mongo_data()
     status = HNMongoClient().insert(data)
     return render_template("add-post.html", status=status)

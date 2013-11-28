@@ -8,7 +8,7 @@ class HNMongoClient:
         if MONGO_URL:
             self.client = MongoClient(MONGO_URL)
         else:
-            self.client = MongoClient('localhost', 27017)
+            self.client = MongoClient('mongodb://heroku:b69e0bd8ac101ac482568a762693ce42@paulo.mongohq.com:10049/app19833727')
         self.db = self.client['hn-polls']
         self.polls = self.db['polls']
 

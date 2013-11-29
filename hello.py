@@ -32,11 +32,11 @@ def poll_detail():
               ]
     }
     options = {
-              "scaleOverlay" : true,
-              "scaleOverride" : true,
+              "scaleOverlay" : True,
+              "scaleOverride" : True,
               "scaleStartValue" : 0,
               "scaleSteps" : 11,
-              "scaleStepWidth" : max(graph_votes)/10
+              "scaleStepWidth" : (max(graph_votes)/10)
     }
     return jsonify(result=result)
 

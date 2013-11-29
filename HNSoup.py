@@ -17,7 +17,7 @@ class HNSoup:
         return self.parsed_html.body.find('a', attrs={'href':'item?id='+self.post_id}).text.split(':')[1]
 
     def get_graph_labels(self):
-        return [x.div.font.text for x in self.parsed_html.find_all('td', attrs={'class':'comment'})]
+        return [x.div.font.text if len(x.div.font.text) < 31 else x.div.font.text[:30] for x in self.parsed_html.find_all('td', attrs={'class':'comment'})]
 
     def get_post_votes(self):
         return self.parsed_html.find('td', attrs={'class':'subtext'}).span.text.split(' ')[0]

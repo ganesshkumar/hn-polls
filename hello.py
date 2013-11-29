@@ -43,7 +43,7 @@ def poll_detail():
             "data" : data,
             "options": options
     }
-    return jsonify(result=result)
+    return jsonify(result=data)
 
 @app.route("/")
 def hello():

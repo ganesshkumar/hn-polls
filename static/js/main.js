@@ -9,7 +9,7 @@ make_clickable = function() {
             window.result = data.result;
             var canvas = document.getElementById(poll_id + "-canvas");
             canvas.style.display = "block";
-            canvas.width = data.labels.length * 70
+            canvas.width = data.result.labels.length * 70
             canvas.height = 600
             options = {
               scaleOverlay : true,

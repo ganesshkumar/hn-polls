@@ -24,8 +24,8 @@ def poll_detail():
               "labels" : graph_labels,
               "datasets" : [
                   {
-                      "fillColor" : "rgba(220,220,220,0.5)",
-                      "strokeColor" : "rgba(220,220,220,1)",
+                      "fillColor" : "rgba(151,187,205,0.5)",
+                      "strokeColor" : "rgba(151,187,205,1)",
                       "data" : graph_votes
                   }
               ]

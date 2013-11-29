@@ -9,6 +9,8 @@ make_clickable = function() {
             window.result = data.result;
             var canvas = document.getElementById(poll_id + "-canvas");
             canvas.style.display = "block";
+            canvas.style.width = "1200px";
+            canvas.style.height = "600px";
             new Chart(canvas.getContext("2d")).Bar(data.result);
         });
         return false;

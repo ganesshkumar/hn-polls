@@ -14,7 +14,7 @@ make_clickable = function() {
               scaleOverride : true,
               scaleStartValue : 0,
               scaleSteps : 11,
-              scaleStepWidth : (Math.max.apply(Math, data.result.datasets.data)/10)
+              scaleStepWidth : (Math.max.apply(Math, data.result.datasets[0].data)/10)
             }
             new Chart(canvas.getContext("2d")).Bar(data.result, options);
         });

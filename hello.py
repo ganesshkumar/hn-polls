@@ -20,12 +20,13 @@ def poll_detail():
     soup = HNSoup(post_id)
     graph_labels = soup.get_graph_labels()
     graph_votes = soup.get_graph_votes()
+    
     result = {
               "labels" : graph_labels,
               "datasets" : [
                   {
-                      "fillColor" : "rgba(151,187,205,0.5)",
-                      "strokeColor" : "rgba(151,187,205,1)",
+                      "fillColor" : "rgba(243,134,48,0.5)",
+                      "strokeColor" : "rgba(243,134,48,1)",
                       "data" : graph_votes
                   }
               ]

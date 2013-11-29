@@ -21,9 +21,9 @@ def poll_detail():
     graph_labels = soup.get_graph_labels()
     graph_votes = soup.get_graph_votes()
     
-    result = {
-              "labels" : graph_labels,
-              "datasets" : [
+    data = {
+           "labels" : graph_labels,
+           "datasets" : [
                   {
                       "fillColor" : "rgba(243,134,48,0.5)",
                       "strokeColor" : "rgba(243,134,48,1)",
@@ -37,6 +37,11 @@ def poll_detail():
               "scaleStartValue" : 0,
               "scaleSteps" : 11,
               "scaleStepWidth" : (max(graph_votes)/10)
+    }
+
+    result = {
+            "data" : data,
+            "options": options
     }
     return jsonify(result=result)
 

@@ -16,7 +16,7 @@ make_clickable = function() {
               scaleSteps : 11,
               scaleStepWidth : (Math.max.apply(Math, data.result.datasets.data)/10)
             }
-            new Chart(canvas.getContext("2d")).Bar(data.result);
+            new Chart(canvas.getContext("2d")).Bar(data.result, options);
         });
         return false;
     })

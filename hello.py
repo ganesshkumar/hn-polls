@@ -31,6 +31,13 @@ def poll_detail():
                   }
               ]
     }
+    options = {
+              "scaleOverlay" : true,
+              "scaleOverride" : true,
+              "scaleStartValue" : 0,
+              "scaleSteps" : 11,
+              "scaleStepWidth" : max(graph_votes)/10
+    }
     return jsonify(result=result)
 
 @app.route("/")

@@ -17,7 +17,7 @@
         <span class="clickable" id="{{ poll._id }}-title"> {{ poll.title}} </span>
         <span> {{ poll._id }} </span>
         <span> {{ poll.date_added.date() }} </span>
-        <canvas id="{{ poll._id }}-canvas" style="display:none"></canvas>
+        <canvas id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></canvas>
       </div>
     {% endfor %}
 </body>

@@ -21,3 +21,4 @@ class HNMongoClient:
             return "Post added successfully"
         except errors.DuplicateKeyError:
             return  "Post already added"
+

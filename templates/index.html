@@ -1,25 +1,29 @@
 <!doctype html>
 <head>
 <title>HN Polls</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script type=text/javascript>
-  $root_url = {{ request.base_url|tojson|safe }};
-</script>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script type=text/javascript>
+    $root_url = {{ request.base_url|tojson|safe }};
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
 </head>
 <body onload="make_clickable()">
-    <h1 style="text-align:center"> Under Construction </h1>
-    <h2 style="text-align:center"> A site to collect all the HackerNews polls </h2>
+  <h1 style="text-align:center"> Under Construction </h1>
+  <h2 style="text-align:center"> A site to collect all the HackerNews polls </h2>
+  <div class="fixed-width-container">
     {% for poll in polls %}
-      <div>
-        <span> {{ poll.votes }} points</span>
-        <span class="clickable" id="{{ poll._id }}-title"> {{poll.title}} </span>
-        <span> <a href="https://news.ycombinator.com/item?id={{ poll._id}}">{{ poll._id }}</a> </span>
+      <div class="poll">
+        <a href="#" id="{{ poll._id }}-button"class="orange-button">+</a>
+        <span id="{{ poll._id }}-title"> <a class="hn-link" href="https://news.ycombinator.com/item?id={{ poll._id}}">{{ poll.title }}</a> </span>
+         <span> {{ poll.votes }} points</span>
         <span> {{ poll.date_added.date() }} </span>
         <div id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></div>
       </div>
     {% endfor %}
+  </div>
 </body>
 </html>

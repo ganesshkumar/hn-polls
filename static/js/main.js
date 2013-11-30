@@ -1,16 +1,19 @@
 make_clickable = function() {
     poll_id = null
-    $('.clickable').unbind("click").bind("click", function(){
+    $('.orange-button').unbind("click").bind("click", function(){
         poll_id = this.id.split("-")[0];
 
-        canvas = $('#' + poll_id + '-canvas');
-            if (canvas.css('display') == 'none')
-                canvas.show();
-            else {
-                canvas.hide();
-                return; 
-            }
+        button_text = $('#'+ poll_id +'-button')
+        button_text.text((button_text.text() == "+") ? "-" : "+");
 
+        canvas = $('#' + poll_id + '-canvas');
+        if (canvas.css('display') == 'none')
+            canvas.show();
+        else {
+            canvas.hide();
+            return; 
+        }
+        
         $.getJSON($root_url + 'poll-detail', {
             poll_id: poll_id,
         }, function(data) {

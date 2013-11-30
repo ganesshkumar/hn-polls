@@ -1,0 +1,31 @@
+.fixed-width-container {
+	width: 80%;
+	left: 10%;
+	position: relative;
+	background-color: #f6f6ef;
+}
+
+.poll {
+	padding-top: 10px;
+}
+
+.orange-button {
+	border: 1px solid #ff6600;
+	display: inline-block;
+	color: #ff6600;
+	font-weight: bold;
+	line-height: inherit;
+	width: 20px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #ffffff;
+}
+.orange-button:active {
+	position: relative;
+	top: 1px;
+}
+
+.hn-link {
+	text-decoration: none;
+	color: black;
+}

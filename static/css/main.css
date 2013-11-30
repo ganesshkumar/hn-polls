@@ -6,14 +6,24 @@
 }
 
 .poll {
-	padding-top: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	float: none;
+	font-family: Verdana;
+	vertical-align: middle;
+}
+
+.poll-content {
+	margin-left: 10px;
+	padding-left: 10px;
 }
 
 .orange-button {
-	border: 1px solid #ff6600;
+	float: left;
+	border: 0px;
 	display: inline-block;
 	color: #ff6600;
-	font-weight: bold;
+	font-weight: lighter;
 	line-height: inherit;
 	width: 20px;
 	text-decoration: none;
@@ -28,4 +38,18 @@
 .hn-link {
 	text-decoration: none;
 	color: black;
+	font-size: 10pt;
+}
+
+.subtext {
+	color: #828282;
+	font-size: 7pt;
+	height: 7pt;
+	font-family: Verdana;
+}
+.subtext-delimiter:after {
+	content: "|";
+	font-size: 7pt;
+	font-weight: lighter;
+	color: #828282;
 }

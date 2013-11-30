@@ -18,7 +18,7 @@
 	padding-left: 10px;
 }
 
-.orange-button {
+.button {
 	float: left;
 	border: 0px;
 	display: inline-block;
@@ -30,9 +30,16 @@
 	text-align: center;
 	text-shadow: 1px 1px 0px #ffffff;
 }
-.orange-button:active {
-	position: relative;
-	top: 1px;
+.button:hover {
+	color: #ffa366;
+}
+
+.refresh {
+	font-weight: bold;
+	display: none;
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 
+	-webkit-transform:rotate(45deg);
 }
 
 .hn-link {
@@ -53,3 +60,4 @@
 	font-weight: lighter;
 	color: #828282;
 }
+

@@ -3,18 +3,25 @@ make_clickable = function() {
     $('.clickable').unbind("click").bind("click", function(){
         poll_id = this.id.split("-")[0];
 
+        canvas = $('#' + poll_id + '-canvas');
+            if (canvas.css('display') == 'none')
+                canvas.show();
+            else {
+                canvas.hide();
+                return; 
+            }
+
         $.getJSON($root_url + 'poll-detail', {
             poll_id: poll_id,
         }, function(data) {
             window.result = data.result;
             result = data.result;
-            
+
             //Code for highchart.js
-            canvas = $('#' + poll_id + '-canvas');
-            canvas.show()
             canvas.highcharts({
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: 200 + result.labels.length * 20
             },
             title: {
                 text: result.title
@@ -64,6 +71,7 @@ make_clickable = function() {
             },
             series: [{
                 name: 'HN Votes',
+                color: 'orange',
                 data: result.votes
             }]
         });

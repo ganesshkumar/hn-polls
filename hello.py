@@ -21,7 +21,9 @@ def poll_detail():
     graph_title = soup.get_title()
     graph_labels = soup.get_graph_labels()
     graph_votes = soup.get_graph_votes()
-    
+
+    graph_votes, graph_labels = zip(*sorted(zip(graph_votes, graph_labels), reverse=True))
+
     data = {
            "title" : graph_title,
            "labels" : graph_labels,
@@ -34,7 +36,6 @@ def hello():
     client = HNMongoClient()
     collection = client.get_collection()
     cursor = collection.find().limit(10)
-    print "test"
     polls = []
     for poll in cursor:
         polls.append(poll)

@@ -1,5 +1,5 @@
 make_clickable = function() {
-    poll_id = null
+    var poll_id = null
     $('.orange-button').unbind("click").bind("click", function(){
         poll_id = this.id.split("-")[0];
 
@@ -7,13 +7,13 @@ make_clickable = function() {
         button_text.text((button_text.text() == "+") ? "-" : "+");
 
         canvas = $('#' + poll_id + '-canvas');
-        if (canvas.css('display') == 'none')
-            canvas.show();
-        else {
-            canvas.hide();
-            return; 
-        }
         
+        if (canvas.css('display') != 'none') {
+            canvas.toggle("slide");
+            canvas.highcharts({});
+            return;
+        }
+
         $.getJSON($root_url + 'poll-detail', {
             poll_id: poll_id,
         }, function(data) {
@@ -22,62 +22,64 @@ make_clickable = function() {
 
             //Code for highchart.js
             canvas.highcharts({
-            chart: {
-                type: 'bar',
-                height: 200 + result.labels.length * 20
-            },
-            title: {
-                text: result.title
-            },
-            subtitle: {
-                text: ''
-            },
-            xAxis: {
-                categories: result.labels,
-                title: {
-                    text: null
-                }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Number of votes',
-                    align: 'high'
+                chart: {
+                    type: 'bar',
+                    height: 200 + result.labels.length * 20,
                 },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' votes'
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
+                title: {
+                    text: result.title
+                },
+                subtitle: {
+                 text: ''
+                },
+                xAxis: {
+                    categories: result.labels,
+                    title: {
+                        text: null
                     }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
-            },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                name: 'HN Votes',
-                color: 'orange',
-                data: result.votes
-            }]
-        });
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Number of votes',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' votes'
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: '#FFFFFF',
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'HN Votes',
+                    color: 'orange',
+                    data: result.votes
+                }]
+            });
+        $('#' + poll_id + '-canvas').toggle("slide");
+        $('#' + poll_id + '-canvas').width('100%');
 
         });
         return false;

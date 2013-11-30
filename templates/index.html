@@ -1,12 +1,15 @@
 <!doctype html>
 <head>
-<title>Hello from Flask</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+<title>HN Polls</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<!--<script src="{{ url_for('static', filename='js/Chart.js') }}"></script>-->
 <script type=text/javascript>
   $root_url = {{ request.base_url|tojson|safe }};
 </script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/highcharts.js') }}"></script>
 </head>
 <body onload="make_clickable()">
     <h1 style="text-align:center"> Under Construction </h1>
@@ -17,7 +20,7 @@
         <span class="clickable" id="{{ poll._id }}-title"> {{poll.title}} </span>
         <span> <a href="https://news.ycombinator.com/item?id={{ poll._id}}">{{ poll._id }}</a> </span>
         <span> {{ poll.date_added.date() }} </span>
-        <canvas id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></canvas>
+        <div id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></div>
       </div>
     {% endfor %}
 </body>

@@ -4,7 +4,10 @@ from pymongo import MongoClient, errors
 
 class HNMongoClient:
     def __init__(self):
-        self.client = MongoClient('mongodb://heroku:heroku123@paulo.mongohq.com:10049/app19833727')
+        try:
+            self.client = MongoClient('mongodb://heroku:heroku123@paulo.mongohq.com:10049/app19833727')
+        except errors.ConnectionFailure:
+            self.client = MongoClient('localhost',27017)
         self.db = self.client.app19833727
         self.polls = self.db.polls
 

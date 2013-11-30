@@ -18,18 +18,20 @@ def add_poll(post_id):
 def poll_detail():
     post_id = request.args.get('poll_id', '', type=str)
     soup = HNSoup(post_id)
+    graph_title = soup.get_title()
     graph_labels = soup.get_graph_labels()
     graph_votes = soup.get_graph_votes()
     
     data = {
+           "title" : graph_title,
            "labels" : graph_labels,
-           "datasets" : [
-                  {
-                      "fillColor" : "rgba(243,134,48,0.5)",
-                      "strokeColor" : "rgba(243,134,48,1)",
-                      "data" : graph_votes
-                  }
-              ]
+           #"datasets" : [
+           #       {
+           #           "fillColor" : "rgba(243,134,48,0.5)",
+           #           "strokeColor" : "rgba(243,134,48,1)",
+           "votes" : graph_votes
+           #       }
+           #   ]
     }
     return jsonify(result=data)
 
@@ -38,6 +40,7 @@ def hello():
     client = HNMongoClient()
     collection = client.get_collection()
     cursor = collection.find().limit(10)
+    print "test"
     polls = []
     for poll in cursor:
         polls.append(poll)

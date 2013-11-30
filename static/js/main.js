@@ -8,19 +8,7 @@ make_clickable = function() {
         }, function(data) {
             window.result = data.result;
             result = data.result;
-            // Code for Chart.js
-            /*var canvas = document.getElementById(poll_id + "-canvas");
-            canvas.style.display = "block";
-            canvas.width = data.result.labels.length * 70
-            canvas.height = 600
-            options = {
-              scaleOverlay : true,
-              scaleOverride : true,
-              scaleStartValue : 0,
-              scaleSteps : 11,
-              scaleStepWidth : Math.round((Math.max.apply(Math, data.result.datasets[0].data)/10))
-            }
-            new Chart(canvas.getContext("2d")).Bar(data.result, options);*/
+            
             //Code for highchart.js
             canvas = $('#' + poll_id + '-canvas');
             canvas.show()

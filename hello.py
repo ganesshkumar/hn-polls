@@ -25,13 +25,7 @@ def poll_detail():
     data = {
            "title" : graph_title,
            "labels" : graph_labels,
-           #"datasets" : [
-           #       {
-           #           "fillColor" : "rgba(243,134,48,0.5)",
-           #           "strokeColor" : "rgba(243,134,48,1)",
            "votes" : graph_votes
-           #       }
-           #   ]
     }
     return jsonify(result=data)
 

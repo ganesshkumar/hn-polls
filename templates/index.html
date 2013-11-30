@@ -14,20 +14,22 @@
 <body onload="make_clickable()">
   <h1 style="text-align:center"> Under Construction </h1>
   <h2 style="text-align:center"> A site to collect all the HackerNews polls </h2>
-  <div class="fixed-width-container">
-    {% for poll in polls %}
-      <div class="poll">
-        <a href="#" id="{{ poll._id }}-button" class="show button">+</a>
-        <a href="#" id="{{ poll._id }}-refresh" class="refresh button">&#x21bb;</a>
-        <div class="poll-content">
-          <span id="{{ poll._id }}-title"> <a class="hn-link" href="https://news.ycombinator.com/item?id={{ poll._id}}">{{ poll.title }}</a> </span>
-          <span class="subtext"> {{ poll.votes }} points</span>
-          <span class="subtext-delimiter"></span>
-          <span class="subtext"> {{ poll.date_added.date() }} </span>
+  <div class="container">
+    <div class="fixed-width-container">
+      {% for poll in polls %}
+        <div class="poll">
+          <a href="#" id="{{ poll._id }}-button" class="show button">+</a>
+          <a href="#" id="{{ poll._id }}-refresh" class="refresh button">&#x21bb;</a>
+          <div class="poll-content">
+            <span id="{{ poll._id }}-title"> <a class="hn-link" href="https://news.ycombinator.com/item?id={{ poll._id}}">{{ poll.title }}</a> </span>
+            <span class="subtext"> {{ poll.votes }} points</span>
+            <span class="subtext-delimiter"></span>
+            <span class="subtext"> {{ poll.date_added.date() }} </span>
+          </div>
+          <div id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></div>
         </div>
-        <div id="{{ poll._id }}-canvas" style="display:none" width="600" height="450"></div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </body>
 </html>

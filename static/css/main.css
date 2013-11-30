@@ -1,6 +1,13 @@
+.container {
+	width: 90%;
+	left: 5%;
+	position: relative;
+	background-color: #f6f6ef;
+}
+
 .fixed-width-container {
-	width: 80%;
-	left: 10%;
+	width: 95%;
+	left: 0%;
 	position: relative;
 	background-color: #f6f6ef;
 }

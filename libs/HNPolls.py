@@ -4,6 +4,7 @@ from flask import render_template, url_for, jsonify
 
 from HNSoup import HNSoup
 from HNMongo import HNMongoClient
+from HNConstants import HNConstants
 
 class HNPolls:
     def __init__(self):
@@ -30,14 +31,17 @@ class HNPolls:
 
         return jsonify(result=data)
 
-    def list_polls(self, request):
-    	print "ther"
+    def list_polls(self, request, page_index):
         client = HNMongoClient()
         collection = client.get_collection()
-        cursor = collection.find().limit(10)
+        # ToDo: Get polls_per_page and next_page_url from HNConstants
+        polls_per_page = 5
+        starting_index = (page_index - 1) * polls_per_page
+        cursor = collection.find().sort("_id", -1)[starting_index:(starting_index+polls_per_page)]
         polls = []
         for poll in cursor:
             polls.append(poll)
-            print "ready to render "
-        return render_template("index.html", polls=polls , request=request)
+        no_more_polls = False if len(polls) is polls_per_page else True
+        return render_template("index.html", polls=polls , request=request, 
+                next_page_url="/?page=" + str(page_index + 1), no_more_polls=no_more_polls)
 

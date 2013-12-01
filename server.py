@@ -16,11 +16,15 @@ def add_polls(poll_id):
 @app.route("/poll-detail", methods=['POST', 'GET'])
 def poll_detail():
     poll_id = request.args.get('poll_id', '', type=str)
+    if poll_id is '':
+        return "Invalid request"
     return hn_polls.poll_detail(poll_id)
 
-@app.route("/")
+
+@app.route("/", methods=['POST', 'GET'])
 def index():
-    return hn_polls.list_polls(request)
+    index = request.args.get('page', 1, type=int)
+    return hn_polls.list_polls(request, index)
 
 #if __name__ == "__main__":
 #    app.run()

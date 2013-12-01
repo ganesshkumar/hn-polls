@@ -50,6 +50,11 @@
 	color: black;
 	font-size: 10pt;
 }
+.hn-link:visited {
+	text-decoration: none;
+	color: #828282;
+	font-size: 10pt;
+}
 
 .subtext {
 	color: #828282;
@@ -62,4 +67,14 @@
 	font-size: 7pt;
 	font-weight: lighter;
 	color: #828282;
+}
+
+.next-page {
+	position: relative;
+	width: 50%;
+	left: 20px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	font-size: 10pt;
+	font-family: Verdana;
 }

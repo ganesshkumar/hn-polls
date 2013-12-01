@@ -42,11 +42,7 @@
 }
 
 .refresh {
-	font-weight: bold;
 	display: none;
-	transform:rotate(45deg);
-	-ms-transform:rotate(45deg); 
-	-webkit-transform:rotate(45deg);
 }
 
 .hn-link {
@@ -67,4 +63,3 @@
 	font-weight: lighter;
 	color: #828282;
 }
-

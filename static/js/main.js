@@ -8,8 +8,9 @@ show_button = function() {
     $('.show.button').unbind("click").bind("click", function(){
         poll_id = this.id.split("-")[0];
 
-        button_text = $('#'+ poll_id +'-button')
-        button_text.text((button_text.text() == "+") ? "-" : "+");
+        show_button = $('#'+ poll_id +'-button')
+        button_text = (show_button.text() == "+") ? "-" : "+";
+        show_button.text(button_text);
 
         canvas = $('#' + poll_id + '-canvas');
         
@@ -26,12 +27,9 @@ show_button = function() {
             return;
         }
 
-        $.getJSON($root_url + 'poll-detail', {
-            poll_id: poll_id,
-        }, function(data) {
-            set_highchart(canvas, poll_id, data.result);
-            $('#' + poll_id + '-refresh').show();
-        });
+        show_button.text('·');
+        var spinner = new Spinner(spinner_options).spin(show_button.get(0));
+        render_graph(poll_id, show_button, button_text);
         return;
     });
 }
@@ -40,13 +38,23 @@ refresh_button = function () {
     var poll_id = null;
     $('.refresh.button').unbind("click").bind("click", function(){
         poll_id = this.id.split("-")[0];
-        canvas = $('#' + poll_id + '-canvas');
+        refresh_button = $('#'+ poll_id +'-refresh');
+        text = refresh_button.text();
+        
+        refresh_button.text('·');
+        var spinner = new Spinner(spinner_options).spin(refresh_button.get(0));
+        render_graph(poll_id, refresh_button, text);
+    });
+}
 
-        $.getJSON($root_url + 'poll-detail', {
-            poll_id: poll_id,
-        }, function(data) {
-            set_highchart(canvas, poll_id, data.result);
-        });
+render_graph = function(poll_id, element, text) {
+    canvas = $('#' + poll_id + '-canvas');
+    $.getJSON($root_url + 'poll-detail', {
+        poll_id: poll_id,
+    }, function(data) {
+        set_highchart(canvas, poll_id, data.result);
+        $('#' + poll_id + '-refresh').show();
+        element.text(text);
     });
 }
 
@@ -110,3 +118,22 @@ set_highchart = function(element, poll_id, result) {
         }]
     });
 }
+
+var spinner_options = {
+  lines: 7, // The number of lines to draw
+  length: 4, // The length of each line
+  width: 2, // The line thickness
+  radius: 2, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#ff6600', // #rgb or #rrggbb or array of colors
+  speed: 1, // Rounds per second
+  trail: 60, // Afterglow percentage
+  shadow: false, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: 3, // Top position relative to parent in px
+  left: 1 // Left position relative to parent in px
+};

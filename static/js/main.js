@@ -113,7 +113,7 @@ set_highchart = function(element, poll_id, result) {
         },
         series: [{
             name: 'HN Votes',
-            color: 'orange',
+            color: '#ff6600',
             data: result.votes
         }]
     });

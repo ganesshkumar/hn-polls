@@ -12,6 +12,36 @@
 	background-color: #f6f6ef;
 }
 
+.header {
+	background-color: #ff6600;
+	vertical-align: bottom;
+	height: 20px;
+	border: 0px solid white;
+	padding: 4px 4px 4px 4px;
+}
+
+.logo {
+	float: left;
+	position: relative;
+	color: white;
+	border: 1px solid white;
+	text-align: center;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 10pt;
+	height: 20px;
+	width: 20px;
+}
+
+.title {
+	float: left;
+	vertical-align: middle;
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 10pt;
+	padding: 2px 10px 5px 10px;
+}
+
 .poll {
 	padding-top: 3px;
 	padding-bottom: 3px;

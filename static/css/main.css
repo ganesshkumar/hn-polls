@@ -108,3 +108,7 @@
 	font-size: 10pt;
 	font-family: Verdana;
 }
+
+.footer {
+	border-top: 2px solid #ff6600;
+}

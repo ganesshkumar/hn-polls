@@ -18,17 +18,18 @@ def add_poll(post_id):
 def poll_detail():
     post_id = request.args.get('poll_id', '', type=str)
     soup = HNSoup(post_id)
-    graph_title = soup.get_title()
-    graph_labels = soup.get_graph_labels()
-    graph_votes = soup.get_graph_votes()
 
-    graph_votes, graph_labels = zip(*sorted(zip(graph_votes, graph_labels), reverse=True))
-
+    graph_votes, graph_labels = zip(*sorted(zip(soup.get_graph_votes(), soup.get_graph_labels()), reverse=True))
     data = {
-           "title" : graph_title,
+           "title" : soup.get_title(),
            "labels" : graph_labels,
            "votes" : graph_votes
     }
+
+    # Updating the entry in datastore
+    mongodb_data = soup.get_mongo_data()
+    HNMongoClient().save(mongodb_data)
+
     return jsonify(result=data)
 
 @app.route("/")

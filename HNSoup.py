@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-import datetime
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
 from HNCurl import HNCurl
@@ -26,10 +26,15 @@ class HNSoup:
         value = [int(x.span.span.text.split(' ')[0]) if x.span.span is not None else '' for x in self.parsed_html.find_all('td', attrs={'class':'default'})]
         return filter(None, value)
 
+    def get_date(self):
+        text = self.parsed_html.find('td', attrs={'class':'subtext'}).text
+        n_days_ago = int(text.split(" ")[4])
+        return (datetime.now() - timedelta(days=n_days_ago))
+
     def get_mongo_data(self):
         data = { "_id": int(self.post_id),
                  "votes": self.get_post_votes(),
                  "title": self.get_title(),
-                 "date_added": datetime.datetime.utcnow()
+                 "date_added": self.get_date()
                }
         return data

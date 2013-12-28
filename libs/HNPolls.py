@@ -35,7 +35,7 @@ class HNPolls:
         client = HNMongoClient()
         collection = client.get_collection()
         # ToDo: Get polls_per_page and next_page_url from HNConstants
-        polls_per_page = 5
+        polls_per_page = 20
         starting_index = (page_index - 1) * polls_per_page
         cursor = collection.find().sort("_id", -1)[starting_index:(starting_index+polls_per_page)]
         polls = []

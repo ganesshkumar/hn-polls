@@ -9,6 +9,7 @@ from HNPolls import HNPolls
 app = Flask(__name__)
 hn_polls = HNPolls()
 
+@app.route("/submit/<poll_id>")
 @app.route("/add-poll/<poll_id>")
 def add_polls(poll_id):
     return hn_polls.add_poll(poll_id)
@@ -25,6 +26,11 @@ def poll_detail():
 def index():
     index = request.args.get('page', 1, type=int)
     return hn_polls.list_polls(request, index)
+
+@app.route("/submit")
+def submit():
+    print 'teset' 
+    return hn_polls.submit_poll(request)
 
 #if __name__ == "__main__":
 #    app.run()

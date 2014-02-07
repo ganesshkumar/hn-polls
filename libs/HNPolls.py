@@ -45,3 +45,6 @@ class HNPolls:
         return render_template("index.html", polls=polls , request=request, 
                 next_page_url="/?page=" + str(page_index + 1), no_more_polls=no_more_polls)
 
+    def submit_poll(self, request):
+        return render_template("submit-poll.html", request=request)
+

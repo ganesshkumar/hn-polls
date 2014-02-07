@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-<title>HN Polls - Hackers News Polls</title>
+<title>HN Polls - Hackers Polls</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -19,7 +19,8 @@
     <div class="header">
       <div><a href="https://news.ycombinator.com" class="logo">Y</a></div>
       <div class="title">Hacker News Polls</div>
-    </div>
+      <span class="sub-title"><a href="/submit" class="title-link">submit</span>
+     </div>
 
     <div class="fixed-width-container">
       {% for poll in polls %}

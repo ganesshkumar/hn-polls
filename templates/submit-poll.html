@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+<title>HN Polls - Hackers Polls</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script type=text/javascript>
+    $root_url = {{ request.base_url|tojson|safe }};
+    function submit() {
+      poll_id = document.getElementById('poll-id').value;
+      window.location.replace($root_url + '/' + poll_id);
+    }
+  </script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div><a href="https://news.ycombinator.com" class="logo">Y</a></div>
+      <div class="title">Submit</div>
+     </div>
+    <div class="fixed-width-container">
+      <table>
+        <tr>
+          <td><span style="color:#828282;">poll id</span></td>
+          <td><input type="text" id='poll-id'></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="button" value="submit" onclick="submit()"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
